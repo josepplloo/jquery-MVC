@@ -13,6 +13,6 @@ function GalleryController(el, view, model){
     }
 
     this.imageClicked = function (e) {
-        console.log('image clicked', e.target.src);
+        console.log('This image clicked', e.target.src);
     }
 }

@@ -3,25 +3,30 @@ const minify = require('gulp-minify');
 const concat = require('gulp-concat');
 const sass = require('gulp-sass');
 
-gulp.task('default', function () {
-   console.log('Gulp task running...'); 
-});
+const SCRIPTS_SRC = './src/**/*.js';
+const STYLES_SRC = './src/scss/*.scss';
 
-gulp.task('scripts', function () {
-    gulp.src('./src/**/*.js')
+function scripts() {
+    return gulp.src(SCRIPTS_SRC)
         .pipe(concat('app.js'))
         .pipe(minify({
             noSource: true
         }))
         .pipe(gulp.dest('dist/js'));
- });
+}
 
- gulp.task('styles', function () {
-    gulp.src('./src/scss/*.scss')
+function styles() {
+    return gulp.src(STYLES_SRC)
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('dist/css'));
- });
+}
 
- gulp.task('watch', function() {
-    gulp.watch('./src/js/*.js', gulp.series('scripts'));
-});
+function watch_files() {
+    gulp.watch(SCRIPTS_SRC, gulp.series(scripts));
+    gulp.watch(STYLES_SRC, gulp.series(styles));
+}
+
+gulp.task('default', gulp.parallel(scripts, styles));
+gulp.task('scripts', scripts);
+gulp.task('styles', styles);
+gulp.task('watch', gulp.series(watch_files));
