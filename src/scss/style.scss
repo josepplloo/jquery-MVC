@@ -1,5 +1,9 @@
-$mainAppColor: blue;
+$mainAppColor: white;
 
 button {
     background-color: $mainAppColor;
+}
+
+body, input, button {
+    font-size: 14px;
 }
