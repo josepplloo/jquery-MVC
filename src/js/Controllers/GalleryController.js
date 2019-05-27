@@ -9,10 +9,13 @@ function GalleryController(el, view, model){
     }
 
     this.bindEvents = function() {
-        this.$el.on('click', '.js-gallery-image', this.imageClicked.bind(this));
+      this.$el.on('click', '.js-gallery-image', this.imageClicked.bind(this));
     }
 
-    this.imageClicked = function (e) {
-        console.log('This image clicked', e.target.src);
-    }
+  this.imageClicked = function (e) {
+    $('.js-gallery-image').removeClass('js-gallery-image--selected');
+
+    e.target.classList.add('js-gallery-image--selected');
+    //console.log('This image clicked', e.target.src);
+  }
 }

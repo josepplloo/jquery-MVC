@@ -1,4 +1,4 @@
-$mainAppColor: white;
+@import './variables';
 
 button {
     background-color: $mainAppColor;
@@ -6,4 +6,13 @@ button {
 
 body, input, button {
     font-size: 14px;
+}
+
+.js-gallery-image {
+  border-radius: 50%;
+  border: 1rem solid $blackColor;
+
+  &--selected {
+  border: 1rem solid $selectedImage;
+  }
 }
