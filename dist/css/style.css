@@ -1,0 +1,18 @@
+button {
+  background-color: white; }
+
+body, input, button {
+  font-size: 14px; }
+
+.js-gallery-image {
+  border-radius: 50%;
+  border: 1rem solid black;
+  max-width: 7rem;
+  margin: 1rem; }
+  .js-gallery-image--selected {
+    border: 1rem solid green; }
+
+.js-contact-image {
+  border-radius: 50%;
+  border: 0.4rem solid black;
+  max-width: 3rem; }

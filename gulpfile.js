@@ -6,6 +6,13 @@ const sass = require('gulp-sass');
 const SCRIPTS_SRC = './src/**/*.js';
 const STYLES_SRC = './src/scss/*.scss';
 
+
+function html() {
+  gulp.src('src/*.html')
+      .pipe(gulp.dest('dist/'))
+};
+
+
 function scripts() {
     return gulp.src(SCRIPTS_SRC)
         .pipe(concat('app.js'))
@@ -26,7 +33,9 @@ function watch_files() {
     gulp.watch(STYLES_SRC, gulp.series(styles));
 }
 
-gulp.task('default', gulp.parallel(scripts, styles));
+
+gulp.task('default', gulp.parallel(html, scripts, styles));
+gulp.task('html', html);
 gulp.task('scripts', scripts);
 gulp.task('styles', styles);
 gulp.task('watch', gulp.series(watch_files));
