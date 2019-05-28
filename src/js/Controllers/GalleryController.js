@@ -1,21 +1,28 @@
 function GalleryController(el, view, model){
-    this.$el = $(el);
-    this.view = view;
-    this.model = model;
+  this.$el = $(el);
+  this.view = view;
+  this.model = model;
+  
+  this.init = function(){
+    this.view.render(model.getAll());
+    this.bindEvents();
+  }
 
-    this.init = function(){
-        this.view.render();
-        this.bindEvents();
-    }
-
-    this.bindEvents = function() {
-      this.$el.on('click', '.js-gallery-image', this.imageClicked.bind(this));
-    }
+  this.bindEvents = function() {
+    this.$el.on('click', '.js-gallery-image', this.imageClicked.bind(this));
+  }
 
   this.imageClicked = function (e) {
-    $('.js-gallery-image').removeClass('js-gallery-image--selected');
+    removeSelected();
 
     e.target.classList.add('js-gallery-image--selected');
-    //console.log('This image clicked', e.target.src);
+    Observer.setData('avatar',$(e.target).attr('src'));
+    Observer.publish()
   }
+
+  const removeSelected = function(data) {
+    $('.js-gallery-image').removeClass('js-gallery-image--selected');
+  }
+
+  //Observer.subscribe(removeSelected)
 }

@@ -11,8 +11,15 @@ body, input, button {
 .js-gallery-image {
   border-radius: 50%;
   border: 1rem solid $blackColor;
-
+  max-width: 7rem;
+  margin: 1rem;
   &--selected {
   border: 1rem solid $selectedImage;
   }
+}
+
+.js-contact-image {
+  border-radius: 50%;
+  border: .4rem solid $blackColor;
+  max-width: 3rem;
 }
